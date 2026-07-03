@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vedant Gorde — Portfolio</title>
+<meta name="description" content="Vedant Gorde — Computer Science student building with Python, Generative AI, and LLMs." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     HOW TO EDIT THIS PORTFOLIO
+     ============================================================
+     ALL of your content lives in ONE place: the CONTENT object
+     inside the <script> tag near the BOTTOM of this file.
+
+     To update your portfolio:
+       1. Scroll down to the line that says  "EDIT EVERYTHING BELOW"
+       2. Change the text between the quotes
+       3. Save the file and re-upload it (or commit on GitHub)
+
+     You never need to touch the HTML or CSS above that line.
+     ============================================================ -->
+
+<style>
+:root{
+  /* Syntax-highlighting inspired palette */
+  --bg:        #10141f;   /* editor background */
+  --panel:     #171d2c;   /* card / panel */
+  --panel-2:   #1d2536;   /* hover panel */
+  --line:      #28324a;   /* borders */
+  --text:      #dce4f5;   /* main text */
+  --muted:     #8b96b3;   /* secondary text */
+  --func:      #6fb3ff;   /* "function blue" — links, accents */
+  --string:    #8ee0a1;   /* "string green" — success / tags */
+  --keyword:   #c792ea;   /* "keyword purple" — highlights */
+  --number:    #f0b26b;   /* "number amber" — dates, metrics */
+  --radius: 14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--func);color:#0b0f18}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(16,20,31,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--text);text-decoration:none;font-size:.95rem}
+.logo span{color:var(--string)}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--func)}
+a:focus-visible{outline:2px solid var(--func);outline-offset:3px;border-radius:4px}
+
+/* ---------- Hero: terminal ---------- */
+header{padding:72px 0 56px}
+.terminal{
+  background:#0c101a;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.term-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;border-bottom:1px solid var(--line);
+  background:#121828;
+}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot:nth-child(1){background:#ff5f57}
+.dot:nth-child(2){background:#febc2e}
+.dot:nth-child(3){background:#28c840}
+.term-title{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--muted)}
+.term-body{padding:26px 26px 30px;font-family:"IBM Plex Mono",monospace;font-size:.92rem}
+.term-body .prompt{color:var(--string)}
+.term-body .cmd{color:var(--text)}
+.term-out{margin-top:18px}
+.hero-name{
+  font-family:"Sora",sans-serif;
+  font-weight:800;
+  font-size:clamp(2.1rem,5.5vw,3.4rem);
+  letter-spacing:-.02em;
+  line-height:1.1;
+  color:#fff;
+}
+.hero-role{margin-top:10px;color:var(--keyword);font-size:1rem}
+.hero-tag{margin-top:14px;color:var(--muted);max-width:56ch;font-family:"IBM Plex Sans",sans-serif;font-size:1rem}
+.cursor{display:inline-block;width:9px;height:1.15em;background:var(--string);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:8px;
+  font-size:.9rem;font-weight:600;text-decoration:none;
+  transition:transform .15s,background .2s;
+  font-family:"IBM Plex Sans",sans-serif;
+}
+.btn-primary{background:var(--func);color:#0b0f18}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{background:var(--panel-2);transform:translateY(-2px)}
+
+/* ---------- Sections ---------- */
+section{padding:56px 0}
+.sec-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.8rem;color:var(--string);
+  margin-bottom:8px;letter-spacing:.04em;
+}
+h2{
+  font-family:"Sora",sans-serif;font-weight:700;
+  font-size:1.7rem;letter-spacing:-.01em;margin-bottom:28px;color:#fff;
+}
+
+/* ---------- Skills ---------- */
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.skill-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.skill-card h3{font-family:"IBM Plex Mono",monospace;font-size:.85rem;font-weight:500;color:var(--keyword);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+  border:1px solid var(--line);border-radius:6px;
+  padding:4px 10px;color:var(--text);background:var(--bg);
+}
+
+/* ---------- Projects ---------- */
+.proj-grid{display:grid;gap:18px}
+.proj{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px;
+  transition:border-color .2s,background .2s;
+}
+.proj:hover{border-color:var(--func);background:var(--panel-2)}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.proj h3{font-family:"Sora",sans-serif;font-size:1.15rem;font-weight:600;color:#fff}
+.proj-year{font-family:"IBM Plex Mono",monospace;color:var(--number);font-size:.82rem}
+.proj p{color:var(--muted);margin-top:10px;font-size:.95rem}
+.proj-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.metric{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--string);border:1px solid rgba(142,224,161,.3);border-radius:6px;padding:3px 9px}
+.proj-tech{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted)}
+.proj-tech span{color:var(--func)}
+.proj a.plink{color:var(--func);text-decoration:none;font-size:.88rem;font-weight:600}
+.proj a.plink:hover{text-decoration:underline}
+.mini-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+
+/* ---------- Experience / Education / Certs ---------- */
+.timeline{border-left:2px solid var(--line);margin-left:6px;padding-left:26px;display:grid;gap:30px}
+.t-item{position:relative}
+.t-item::before{
+  content:"";position:absolute;left:-33px;top:7px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--func);
+}
+.t-item h3{font-family:"Sora",sans-serif;font-size:1.05rem;font-weight:600;color:#fff}
+.t-meta{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--number);margin:4px 0 8px}
+.t-item ul{list-style:none;display:grid;gap:6px}
+.t-item ul li{color:var(--muted);font-size:.93rem;padding-left:18px;position:relative}
+.t-item ul li::before{content:"›";position:absolute;left:0;color:var(--string)}
+.t-item .t-sub{color:var(--muted);font-size:.93rem}
+
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.cert{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:14px 18px;font-size:.9rem;display:flex;gap:10px;align-items:baseline;
+}
+.cert .c-idx{font-family:"IBM Plex Mono",monospace;color:var(--keyword);font-size:.78rem;flex-shrink:0}
+.cert .c-org{color:var(--muted);font-size:.8rem;display:block;margin-top:2px}
+
+/* ---------- Contact ---------- */
+.contact-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:34px;text-align:center;
+}
+.contact-card p{color:var(--muted);max-width:48ch;margin:8px auto 22px}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:.82rem;font-family:"IBM Plex Mono",monospace}
+
+@media (prefers-reduced-motion: reduce){
+  .cursor{animation:none}
+  *{transition:none!important}
+}
+@media (max-width:640px){
+  .nav-links{display:none}
+  .term-body{padding:20px 18px 24px}
+  section{padding:44px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top"><span>&gt;&gt;&gt;</span> <span id="nav-name"></span></a>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="term-title" id="term-title"></span>
+      </div>
+      <div class="term-body">
+        <div><span class="prompt">&gt;&gt;&gt;</span> <span class="cmd" id="typed-cmd"></span><span class="cursor" id="type-cursor"></span></div>
+        <div class="term-out" id="term-out" style="opacity:0;transition:opacity .5s">
+          <div class="hero-name" id="hero-name"></div>
+          <div class="hero-role" id="hero-role"></div>
+          <p class="hero-tag" id="hero-tag"></p>
+          <div class="hero-actions" id="hero-actions"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="skills">
+    <div class="sec-label"># skills</div>
+    <h2>What I work with</h2>
+    <div class="skill-groups" id="skills-container"></div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-label"># projects</div>
+    <h2>Things I've built</h2>
+    <div class="proj-grid" id="projects-container"></div>
+
+    <div class="skill-card" style="margin-top:18px">
+      <h3># mini_projects</h3>
+      <div class="chips mini-list" id="mini-projects-container"></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-label"># experience &amp; education</div>
+    <h2>Where I've been</h2>
+    <div class="timeline" id="timeline-container"></div>
+  </section>
+
+  <section id="certs">
+    <div class="sec-label"># certifications</div>
+    <h2>Certifications</h2>
+    <div class="cert-grid" id="certs-container"></div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-label"># contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact-card">
+      <p id="contact-text"></p>
+      <div class="contact-links" id="contact-links"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" id="footer-text"></div>
+</footer>
+
+<script>
+/* ================================================================
+   ★★★★★★★★★★★★★★  EDIT EVERYTHING BELOW  ★★★★★★★★★★★★★★
+   This is your content. Change any text between the quotes.
+   To add a new project, copy one { ... } block in "projects"
+   and paste it below the last one (keep the comma between blocks).
+   ================================================================ */
+const CONTENT = {
+
+  name: "Vedant Gorde",
+  role: "Software Developer Intern @ EKAM INVENTO · Python · Generative AI · LLMs",
+  tagline: "I build practical AI projects — from deep-learning medical imaging to full-stack AgriTech platforms — while completing my Computer Science degree in Pune.",
+
+  // Your links — replace the # placeholders with your real URLs
+  email: "vedantgordescience@gmail.com",
+  github: "https://github.com/Vedant5176",
+  linkedin: "https://www.linkedin.com/in/vedantgorde",
+  resumeLink: "",  // optional: paste a Google Drive / GitHub link to your resume PDF, or leave ""
+
+  skills: [
+    { group: "languages",  items: ["Python", "Java", "HTML", "CSS", "JavaScript"] },
+    { group: "ai_and_ml",  items: ["OpenAI API", "LangChain", "TensorFlow (Keras)", "Hugging Face", "Pandas", "NumPy"] },
+    { group: "tools",      items: ["Git / GitHub", "Jupyter", "Colab", "Jira", "Wireshark", "Gradio"] },
+    { group: "practices",  items: ["Scrum", "Kanban", "NIST CSF"] }
+  ],
+
+  projects: [
+    {
+      title: "Chest X-ray Classifier — Medical Image Diagnosis",
+      year: "2026",
+      description: "CNN-based pneumonia detection trained on ~5,800 chest X-ray images, with a Gradio interface for real-time predictions and auto-generated diagnostic reports.",
+      metrics: ["92% validation accuracy", "<1.2s inference per image (CPU)"],
+      tech: "Python · TensorFlow (Keras) · Hugging Face · Gradio · Colab",
+      link: ""   // ← paste your project link here (from your resume's LINK)
+    },
+    {
+      title: "AI-based Crop Management System",
+      year: "2026",
+      description: "End-to-end AgriTech platform: React 18 + Vite frontend with drag-and-drop uploads, XGBoost pest prediction, LSTM market forecasting, a RAG-based chatbot, and NDVI/NDMI trend visualizations across 6+ feature modules.",
+      metrics: ["Full-stack build", "6+ feature modules"],
+      tech: "React 18 · Vite · XGBoost · LSTM · RAG · Recharts",
+      link: ""
+    },
+    {
+      title: "LPG Gas Detection & Alert System (IoT)",
+      year: "2025",
+      description: "A safety system that detects LPG gas leaks with an MQ-2 sensor on an Arduino Uno and alerts users instantly via SMS and phone call through a GSM-900 module.",
+      metrics: ["Real-time SMS + call alerts"],
+      tech: "C++ · Arduino Uno · MQ-2 sensor · GSM-900",
+      link: ""
+    }
+  ],
+
+  miniProjects: [
+    "Hand Gesture Volume Control", "Brain Tumor Detection", "AI Crop Recommender",
+    "MoodTunes", "Formechulator", "Daily Notes", "Daily-Quotes"
+  ],
+
+  timeline: [
+    {
+      title: "Software Developer Intern — EKAM INVENTO",
+      meta: "Jun 2026 – Present",
+      points: [
+        "Working with Python, Generative AI, and LLMs",
+        "Building AI-powered applications"
+      ]
+    },
+    {
+      title: "Python Developer Intern — StaxTech",
+      meta: "Feb 2025 – Mar 2026",
+      points: [
+        "Built and tested Python programs following industry coding standards",
+        "Applied data structures, logic building, and modular programming in real development tasks",
+        "Hands-on with the full software development lifecycle: clean code, debugging, testing"
+      ]
+    },
+    {
+      title: "B.Tech, Computer Science Engineering — Pimpri Chinchwad University",
+      meta: "Aug 2023 – Present · CGPA 7.76",
+      points: []
+    },
+    {
+      title: "HSC (12th) — M.S.S Jr. College, Chinchwad · PCMB & IT",
+      meta: "2023 · 72.17%",
+      points: []
+    },
+    {
+      title: "SSC (10th) — St. Ann's High School, Nigdi",
+      meta: "2021 · 84%",
+      points: []
+    }
+  ],
+
+  certifications: [
+    { name: "Agile Project Management", org: "Google" },
+    { name: "Foundations of Cybersecurity", org: "Google" },
+    { name: "Software Engineering: Implementation and Testing", org: "HKUST via Coursera" },
+    { name: "Prompt Engineering with GPT", org: "Coursera" },
+    { name: "IBM Machine Learning", org: "IBM" }
+  ],
+
+  contactText: "I'm open to internships and entry-level opportunities in software development and AI. The fastest way to reach me is email.",
+  footer: "Built by Vedant Gorde · Pune, India"
+};
+/* ================================================================
+   ★★★★★★★★★★★★★  STOP EDITING — code below  ★★★★★★★★★★★★★
+   ================================================================ */
+
+const $ = id => document.getElementById(id);
+const firstName = CONTENT.name.split(" ")[0].toLowerCase();
+
+$("nav-name").textContent = firstName;
+$("term-title").textContent = firstName + "@portfolio — python3";
+$("hero-name").textContent = CONTENT.name;
+$("hero-role").textContent = CONTENT.role;
+$("hero-tag").textContent = CONTENT.tagline;
+$("contact-text").textContent = CONTENT.contactText;
+$("footer-text").textContent = CONTENT.footer;
+document.title = CONTENT.name + " — Portfolio";
+
+// Hero buttons
+const actions = [
+  ["View projects", "#projects", "btn-primary"],
+  ["Email me", "mailto:" + CONTENT.email, "btn-ghost"],
+  ["GitHub", CONTENT.github, "btn-ghost"]
+];
+if (CONTENT.resumeLink) actions.push(["Resume", CONTENT.resumeLink, "btn-ghost"]);
+$("hero-actions").innerHTML = actions.map(([t, h, c]) =>
+  `<a class="btn ${c}" href="${h}" ${h.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${t}</a>`).join("");
+
+// Skills
+$("skills-container").innerHTML = CONTENT.skills.map(s => `
+  <div class="skill-card">
+    <h3># ${s.group}</h3>
+    <div class="chips">${s.items.map(i => `<span class="chip">${i}</span>`).join("")}</div>
+  </div>`).join("");
+
+// Projects
+$("projects-container").innerHTML = CONTENT.projects.map(p => `
+  <article class="proj">
+    <div class="proj-top">
+      <h3>${p.title}</h3>
+      <span class="proj-year">${p.year}</span>
+    </div>
+    <p>${p.description}</p>
+    ${p.metrics && p.metrics.length ? `<div class="proj-metrics">${p.metrics.map(m => `<span class="metric">${m}</span>`).join("")}</div>` : ""}
+    <div class="proj-tech"><span>tech:</span> ${p.tech}</div>
+    ${p.link ? `<div style="margin-top:12px"><a class="plink" href="${p.link}" target="_blank" rel="noopener">View project →</a></div>` : ""}
+  </article>`).join("");
+
+// Mini projects
+$("mini-projects-container").innerHTML = CONTENT.miniProjects.map(m => `<span class="chip">${m}</span>`).join("");
+
+// Timeline
+$("timeline-container").innerHTML = CONTENT.timeline.map(t => `
+  <div class="t-item">
+    <h3>${t.title}</h3>
+    <div class="t-meta">${t.meta}</div>
+    ${t.points.length ? `<ul>${t.points.map(p => `<li>${p}</li>`).join("")}</ul>` : ""}
+  </div>`).join("");
+
+// Certifications
+$("certs-container").innerHTML = CONTENT.certifications.map((c, i) => `
+  <div class="cert"><span class="c-idx">${String(i + 1).padStart(2, "0")}</span>
+    <span>${c.name}<span class="c-org">${c.org}</span></span>
+  </div>`).join("");
+
+// Contact links
+const clinks = [
+  ["✉ " + CONTENT.email, "mailto:" + CONTENT.email, "btn-primary"],
+  ["GitHub", CONTENT.github, "btn-ghost"],
+  ["LinkedIn", CONTENT.linkedin, "btn-ghost"]
+];
+$("contact-links").innerHTML = clinks.map(([t, h, c]) =>
+  `<a class="btn ${c}" href="${h}" ${h.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${t}</a>`).join("");
+
+// Terminal typing animation
+const cmdText = firstName + ".introduce()";
+const cmdEl = $("typed-cmd");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduceMotion) {
+  cmdEl.textContent = cmdText;
+  $("term-out").style.opacity = 1;
+} else {
+  let i = 0;
+  const type = () => {
+    if (i <= cmdText.length) {
+      cmdEl.textContent = cmdText.slice(0, i++);
+      setTimeout(type, 55);
+    } else {
+      setTimeout(() => { $("term-out").style.opacity = 1; }, 250);
+    }
+  };
+  setTimeout(type, 400);
+}
+</script>
+</body>
+</html>
